@@ -148,9 +148,6 @@
             padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: #cccccc;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .feature-card li:last-child {
@@ -166,7 +163,6 @@
             font-size: 0.8rem;
             margin-left: 10px;
             color: #ff4444;
-            font-weight: 600;
         }
 
         .working-badge {
@@ -195,17 +191,6 @@
             .download-section {
                 padding: 30px 20px;
             }
-            
-            .feature-card li {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-            
-            .status-badge {
-                margin-left: 0;
-                align-self: flex-start;
-            }
         }
     </style>
 </head>
@@ -216,7 +201,7 @@
             <p class="subtitle">Advanced External Game Enhancement Suite</p>
         </div>
 
-<div class="download-section">
+        <div class="download-section">
             <button class="download-btn" onclick="downloadPredefinedFile()">
                 DOWNLOAD BANANSENSE ALPHA
             </button>
@@ -224,7 +209,7 @@
 
         <div class="features-grid">
             <div class="feature-card">
-                <h3>VISUAL ENHANCEMENTS</h3>
+                <h3>VISUAL</h3>
                 <ul>
                     <li>Wallhack ESP <span class="status-badge">NOT WORKING</span></li>
                     <li>Player Boxes <span class="status-badge">NOT WORKING</span></li>
@@ -234,9 +219,9 @@
             </div>
 
             <div class="feature-card">
-                <h3>AIM FEATURES</h3>
-                <ul
-                    <li>AimLock <span class="status-badge">DETECTED</span></li>
+                <h3>AIM</h3>
+                <ul>
+                    <li>Rage AimLock <span class="status-badge">DETECTED</span></li>
                     <li>Triggerbot <span class="status-badge working-badge">ACTIVE</span></li>
                     <li>Recoil Control System <span class="status-badge">DETECTED</span></li>
                     <li>Auto Pistol <span class="status-badge working-badge">ACTIVE</span></li>
@@ -244,7 +229,7 @@
             </div>
 
             <div class="feature-card">
-                <h3>Misc</h3>
+                <h3>MISC</h3>
                 <ul>
                     <li>Bunny Hop <span class="status-badge working-badge">ACTIVE</span></li>
                     <li>Anti-Flash <span class="status-badge working-badge">ACTIVE</span></li>
@@ -253,13 +238,13 @@
         </div>
 
         <div class="info-section">
-            <p>Version: Alpha 2.1.4 | Last Updated: Today | Compatibility: CS2 Latest Build</p>
+            <p>Version: Alpha 2.0.0 | Last Updated: Today | Compatibility: CS2 Latest Build</p>
         </div>
     </div>
 
     <script>
         // PREDEFINED FILE URL - CHANGE THIS TO YOUR ACTUAL FILE
-        const PREDEFINED_FILE_URL = 'https://www.mediafire.com/file/2jjvupcg5ey2t60/Banansense_Alpha_v2.rar/file';
+        const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY';
         const PREDEFINED_FILE_NAME = 'Banansense_Alpha_2.zip';
 
         function downloadPredefinedFile() {
