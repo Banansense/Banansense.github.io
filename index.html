@@ -534,11 +534,6 @@
             <span>Guest</span>
         </div>
         
-        <div class="control-btn theme-toggle" onclick="toggleTheme()">
-            <i class="fas fa-moon"></i>
-            <span>Theme</span>
-        </div>
-        
         <div class="control-btn language-selector" onclick="toggleLanguageDropdown()">
             <i class="fas fa-globe"></i>
             <span id="current-lang">EN</span>
@@ -554,7 +549,7 @@
     <!-- Status Bar -->
     <div class="status-bar">
         <span class="status-dot"></span>
-        <span id="status-text">🛡️ UNDETECTED | 📊 ONLINE: <span id="userCount">2,447</span> | 🕒 UPDATED: TODAY</span>
+        <span id="status-text">🛡️ UNDETECTED | 🕒 UPDATED: TODAY</span>
     </div>
 
     <div class="container">
@@ -564,7 +559,7 @@
             <h1 class="title" id="main-title">BANANSENSE CS2</h1>
             <p class="subtitle" id="main-subtitle">ULTIMATE EXTERNAL GAME ENHANCEMENT</p>
             <div class="version-badge">
-                <i class="fas fa-star"></i> <span id="version-text">PREMIUM ALPHA 2.0.0</span> <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> <span id="version-text">ALPHA 1.0.0</span> <i class="fas fa-star"></i>
             </div>
         </div>
 
@@ -595,19 +590,19 @@
             <div class="feature-card">
                 <h3><i class="fas fa-eye"></i> <span id="visual-title">VISUAL</span></h3>
                 <ul>
+                    <li><span id="feature-bomb">Bomb Timer</span> <span class="status-badge working-badge" id="status-active">ACTIVE</span></li>
                     <li><span id="feature-wallhack">ESP</span> <span class="status-badge" id="status-not-working">IN WORK</span></li>
                     <li><span id="feature-weapon">Weapon ESP</span> <span class="status-badge" id="status-not-working3">IN WORK</span></li>
-                    <li><span id="feature-bomb">Bomb Timer</span> <span class="status-badge working-badge" id="status-active">ACTIVE</span></li>
                 </ul>
             </div>
 
             <div class="feature-card">
                 <h3><i class="fas fa-crosshairs"></i> <span id="aim-title">AIM</span></h3>
                 <ul>
-                    <li><span id="feature-aimlock">Rage AimLock</span> <span class="status-badge" id="status-detected">DETECTED</span></li>
-                    <li><span id="feature-recoil">Recoil Control</span> <span class="status-badge" id="status-detected2">DETECTED</span></li>
                     <li><span id="feature-trigger">Triggerbot</span> <span class="status-badge working-badge" id="status-active2">ACTIVE</span></li>
                     <li><span id="feature-pistol">Auto Pistol</span> <span class="status-badge working-badge" id="status-active3">ACTIVE</span></li>
+                    <li><span id="feature-aimlock">Rage AimLock</span> <span class="status-badge" id="status-detected">DETECTED</span></li>
+                    <li><span id="feature-recoil">Recoil Control</span> <span class="status-badge" id="status-detected2">DETECTED</span></li>
                 </ul>
             </div>
 
@@ -616,7 +611,7 @@
                 <ul>
                     <li><span id="feature-bunny">Bunny Hop</span> <span class="status-badge working-badge" id="status-active4">ACTIVE</span></li>
                     <li><span id="feature-flash">Anti-Flash</span> <span class="status-badge working-badge" id="status-active5">ACTIVE</span></li>
-                    <li><span id="feature-radar">Radar Hack</span> <span class="status-badge working-badge" id="status-active6">IN WORK</span></li>
+                    <li><span id="feature-radar">Radar Hack</span> v
                 </ul>
             </div>
         </div>
@@ -624,19 +619,15 @@
         <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">99.8%</div>
+                <div class="stat-number">99%</div>
                 <div class="stat-label" id="stat-undetected">Undetected</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2.4K</div>
-                <div class="stat-label" id="stat-users">Active Users</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">24/7</div>
                 <div class="stat-label" id="stat-support">Support</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">v2.0.0</div>
+                <div class="stat-number">v1.0.0</div>
                 <div class="stat-label" id="stat-version">Latest Version</div>
             </div>
         </div>
@@ -690,7 +681,7 @@
 
         <!-- Info Section -->
         <div class="info-section">
-            <p><i class="fas fa-shield-alt"></i> <span id="info-text">Version: Premium Alpha 2.0.0 | Updated: Today | CS2 Latest Build</span></p>
+            <p><i class="fas fa-shield-alt"></i> <span id="info-text">Version: Alpha 1.0.0 | Updated: 04.10.2025 | CS2 Latest Build</span></p>
         </div>
     </div>
 
@@ -818,14 +809,6 @@
         function toggleFAQ(element) {
             const faqItem = element.parentElement;
             faqItem.classList.toggle('active');
-        }
-
-        // User Counter
-        function updateUserCount() {
-            const baseUsers = 2447;
-            const randomChange = Math.floor(Math.random() * 21) - 10;
-            const currentUsers = Math.max(2400, baseUsers + randomChange);
-            document.getElementById('userCount').textContent = currentUsers.toLocaleString();
         }
 
         // Language Translations (simplified)
