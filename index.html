@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Генератор текста разными шрифтами</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+    h1 { text-align: center; }
+    input { width: 100%; padding: 10px; margin: 15px 0; font-size: 18px; }
+    .result { background: white; padding: 10px; margin: 5px 0; border-radius: 8px; }
+    .style-name { font-weight: bold; color: #444; }
+  </style>
+</head>
+<body>
+  <h1>✨ Генератор текста разными "шрифтами"</h1>
+  <input id="inputText" type="text" placeholder="Введи текст здесь..." oninput="generate()">
+  <div id="output"></div>
+
+  <script>
+    const styles = {
+      "Обычный": t => t,
+      "Жирный": t => `**${t}**`,
+      "Курсив": t => `*${t}*`,
+      "Моноширинный": t => "`" + t + "`",
+      "Каллиграфия": t => toFancy(t, 0x1D4D0, 0x1D4EA),
+      "Модерн": t => toFancy(t, 0x1D63C, 0x1D656),
+      "Готика": t => toFancy(t, 0x1D56C, 0x1D586),
+      "Fullwidth": t => [...t].map(c =>
+        c >= "A" && c <= "Z" ? String.fromCharCode(c.charCodeAt(0) - 65 + 0xFF21) :
+        c >= "a" && c <= "z" ? String.fromCharCode(c.charCodeAt(0) - 97 + 0xFF41) : c
+      ).join(""),
+      "Квадраты": t => [...t].map(c => `🆂🆀🆄🅰🆁🅴`.includes(c.toUpperCase()) ? "🅿" : c).join("")
+    };
+
+    function toFancy(text, baseLower, baseUpper) {
+      return [...text].map(c => {
+        if (c >= "a" && c <= "z") return String.fromCodePoint(baseLower + (c.charCodeAt(0) - 97));
+        if (c >= "A" && c <= "Z") return String.fromCodePoint(baseUpper + (c.charCodeAt(0) - 65));
+        return c;
+      }).join("");
+    }
+
+    function generate() {
+      const text = document.getElementById("inputText").value;
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+      for (let [name, fn] of Object.entries(styles)) {
+        const div = document.createElement("div");
+        div.className = "result";
+        div.innerHTML = `<span class="style-name">${name}:</span> ${fn(text)}`;
+        output.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>
