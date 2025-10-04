@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banansense CS2 | Premium External Suite</title>
+    <title>Banansense CS2 | Ultimate External Suite</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -21,274 +21,210 @@
             --youtube-red: #FF0000;
             --github-white: #ffffff;
             --dark-bg: #0a0a0a;
-            --card-bg: rgba(30, 30, 30, 0.7);
-            --glow-intensity: 0.6;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 50%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
             color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
-            animation: backgroundShift 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes backgroundShift {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.1) rotate(180deg); }
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 20px;
         }
 
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            margin-top: 5px;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .lang-option.active {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--primary-gold);
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: linear-gradient(90deg, #ff6b00, #ffd700);
+            color: #000;
+            padding: 12px 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 80px;
-            position: relative;
+            margin: 40px 0;
         }
 
         .title {
-            font-size: 4.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange), var(--primary-gold));
-            background-size: 200% 200%;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
-            animation: titleGlow 3s ease-in-out infinite;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { 
-                background-position: 0% 50%;
-                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
-            }
-            50% { 
-                background-position: 100% 50%;
-                filter: drop-shadow(0 0 30px rgba(255, 107, 0, 0.5));
-            }
+            margin-bottom: 15px;
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #cccccc;
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         .version-badge {
             display: inline-block;
             background: linear-gradient(45deg, var(--secondary-orange), var(--primary-gold));
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #000;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
         }
 
+        /* Download Section */
         .download-section {
-            background: linear-gradient(135deg, 
-                rgba(255, 215, 0, 0.15) 0%, 
-                rgba(255, 107, 0, 0.15) 50%, 
-                rgba(255, 215, 0, 0.05) 100%);
-            border: 2px solid rgba(255, 215, 0, 0.4);
-            border-radius: 25px;
-            padding: 70px 50px;
-            margin: 60px 0;
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 0, 0.1));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px 30px;
+            margin: 40px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 20px 60px rgba(255, 107, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .download-section::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(255, 215, 0, 0.1),
-                rgba(255, 107, 0, 0.1),
-                rgba(255, 215, 0, 0.1),
-                transparent
-            );
-            animation: rotate 8s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .download-content {
-            position: relative;
-            z-index: 2;
         }
 
         .download-btn {
             background: linear-gradient(45deg, var(--secondary-orange), var(--primary-gold));
             border: none;
             color: #000;
-            padding: 30px 80px;
-            font-size: 1.6rem;
-            font-weight: 800;
-            border-radius: 20px;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            z-index: 2;
-            box-shadow: 
-                0 15px 40px rgba(255, 107, 0, 0.5),
-                0 5px 15px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            overflow: hidden;
-        }
-
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.4), 
-                transparent);
-            transition: left 0.6s;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
         }
 
         .download-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 
-                0 25px 60px rgba(255, 107, 0, 0.7),
-                0 10px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
         }
 
-        .download-btn:hover::before {
-            left: 100%;
-        }
-
-        .download-btn:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
+        /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin: 80px 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%, 
-                rgba(255, 255, 255, 0.02) 100%);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 20px;
-            padding: 40px 30px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary-orange), var(--primary-gold));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-15px) scale(1.03);
+            transform: translateY(-5px);
             border-color: rgba(255, 215, 0, 0.5);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(255, 215, 0, 0.2);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
         }
 
         .feature-card h3 {
             color: var(--primary-gold);
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-weight: 700;
-        }
-
-        .feature-card h3 i {
-            font-size: 1.3rem;
-            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            gap: 10px;
         }
 
         .feature-card ul {
             list-style: none;
-            text-align: left;
         }
 
         .feature-card li {
-            padding: 12px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
+            color: #cccccc;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .feature-card li:hover {
-            color: #ffffff;
         }
 
         .feature-card li:last-child {
@@ -296,65 +232,43 @@
         }
 
         .status-badge {
-            display: inline-block;
-            padding: 8px 18px;
+            padding: 4px 12px;
             background: rgba(255, 0, 0, 0.2);
             border: 1px solid rgba(255, 0, 0, 0.5);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
             color: #ff4444;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
         }
 
         .working-badge {
             background: rgba(0, 255, 0, 0.2);
-            border: 1px solid rgba(0, 255, 0, 0.6);
+            border-color: rgba(0, 255, 0, 0.6);
             color: var(--accent-green);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-            animation: pulseGreen 2s ease-in-out infinite;
         }
 
-        @keyframes pulseGreen {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
-                transform: scale(1.05);
-            }
-        }
-
-        /* Social Media Section */
+        /* Social Media */
         .social-section {
             text-align: center;
-            margin: 60px 0;
-            padding: 50px;
-            background: linear-gradient(135deg, 
-                rgba(255, 215, 0, 0.1) 0%, 
-                rgba(255, 107, 0, 0.1) 50%, 
-                transparent 100%);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(15px);
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .social-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
             background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
         }
 
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            gap: 20px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -362,114 +276,48 @@
         .social-card {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px 20px;
-            transition: all 0.4s ease;
+            border-radius: 15px;
+            padding: 25px 15px;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.1), 
-                transparent);
-            transition: left 0.6s;
         }
 
         .social-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: rgba(255, 215, 0, 0.5);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
         }
 
-        .social-card:hover::before {
-            left: 100%;
-        }
-
-        .social-card.discord {
-            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(88, 101, 242, 0.1));
-            border-color: rgba(88, 101, 242, 0.4);
-        }
-
-        .social-card.telegram {
-            background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(0, 136, 204, 0.1));
-            border-color: rgba(0, 136, 204, 0.4);
-        }
-
-        .social-card.youtube {
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
-            border-color: rgba(255, 0, 0, 0.4);
-        }
-
-        .social-card.github {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-            border-color: rgba(255, 255, 255, 0.4);
-        }
+        .social-card.discord { border-color: rgba(88, 101, 242, 0.4); }
+        .social-card.telegram { border-color: rgba(0, 136, 204, 0.4); }
+        .social-card.youtube { border-color: rgba(255, 0, 0, 0.4); }
+        .social-card.github { border-color: rgba(255, 255, 255, 0.4); }
 
         .social-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .social-card.discord .social-icon {
-            color: var(--discord-purple);
-        }
-
-        .social-card.telegram .social-icon {
-            color: var(--telegram-blue);
-        }
-
-        .social-card.youtube .social-icon {
-            color: var(--youtube-red);
-        }
-
-        .social-card.github .social-icon {
-            color: var(--github-white);
-        }
-
-        .social-card:hover .social-icon {
-            transform: scale(1.2);
-        }
-
-        .social-name {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
-        .social-desc {
-            font-size: 0.9rem;
-            color: #cccccc;
-            opacity: 0.8;
-        }
+        .social-card.discord .social-icon { color: var(--discord-purple); }
+        .social-card.telegram .social-icon { color: var(--telegram-blue); }
+        .social-card.youtube .social-icon { color: var(--youtube-red); }
+        .social-card.github .social-icon { color: var(--github-white); }
 
+        /* Additional Sections */
         .info-section {
             text-align: center;
-            margin-top: 60px;
+            margin: 40px 0;
             color: #888;
-            font-size: 1rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
         }
 
         .stat-item {
@@ -481,33 +329,61 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #cccccc;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 50px 0;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
         }
 
         @media (max-width: 768px) {
             .title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .download-btn {
-                padding: 25px 50px;
-                font-size: 1.3rem;
-            }
-            
-            .download-section {
-                padding: 40px 25px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
             }
             
             .features-grid {
@@ -521,119 +397,418 @@
             .feature-card li {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 5px;
+            }
+            
+            .language-selector {
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="lang-btn" onclick="toggleLanguageDropdown()">
+            <i class="fas fa-globe"></i>
+            <span id="current-lang">EN</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option active" onclick="changeLanguage('en')">
+                <span>🇺🇸 English</span>
+            </div>
+            <div class="lang-option" onclick="changeLanguage('ru')">
+                <span>🇷🇺 Русский</span>
+            </div>
+            <div class="lang-option" onclick="changeLanguage('de')">
+                <span>🇩🇪 Deutsch</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span class="status-dot"></span>
+        <span id="status-text">🛡️ UNDETECTED | 📊 ONLINE: <span id="userCount">2,447</span> | 🕒 UPDATED: TODAY</span>
+    </div>
+
     <div class="container">
+        <!-- Header -->
         <div class="header">
-            <h1 class="title">BANANSENSE CS2</h1>
-            <p class="subtitle">ULTIMATE EXTERNAL GAME ENHANCEMENT SUITE</p>
+            <h1 class="title" id="main-title">BANANSENSE CS2</h1>
+            <p class="subtitle" id="main-subtitle">ULTIMATE EXTERNAL GAME ENHANCEMENT</p>
             <div class="version-badge">
-                <i class="fas fa-star"></i> PREMIUM ALPHA 2.0.0 <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> <span id="version-text">PREMIUM ALPHA 2.0.0</span> <i class="fas fa-star"></i>
             </div>
         </div>
 
+        <!-- Download Section -->
         <div class="download-section">
-            <div class="download-content">
-                <button class="download-btn" onclick="downloadPredefinedFile()">
-                    <i class="fas fa-download"></i> DOWNLOAD BANANSENSE ALPHA
-                </button>
-            </div>
+            <button class="download-btn" onclick="downloadPredefinedFile()">
+                <i class="fas fa-download"></i> <span id="download-text">DOWNLOAD BANANSENSE</span>
+            </button>
         </div>
 
+        <!-- Features Grid -->
         <div class="features-grid">
             <div class="feature-card">
-                <h3><i class="fas fa-eye"></i> VISUAL ENHANCEMENTS</h3>
+                <h3><i class="fas fa-eye"></i> <span id="visual-title">VISUAL</span></h3>
                 <ul>
-                    <li>ESP <span class="status-badge">TESTING</span></li>
-                    <li>Bomb Timer <span class="status-badge working-badge">ACTIVE</span></li>
-                    <li>Weapon ESP <span class="status-badge">TESTING</span></li>
+                    <li><span id="feature-wallhack">Wallhack ESP</span> <span class="status-badge" id="status-not-working">NOT WORKING</span></li>
+                    <li><span id="feature-boxes">Player Boxes</span> <span class="status-badge" id="status-not-working2">NOT WORKING</span></li>
+                    <li><span id="feature-bomb">Bomb Timer</span> <span class="status-badge working-badge" id="status-active">ACTIVE</span></li>
+                    <li><span id="feature-weapon">Weapon ESP</span> <span class="status-badge" id="status-not-working3">NOT WORKING</span></li>
                 </ul>
             </div>
 
             <div class="feature-card">
-                <h3><i class="fas fa-crosshairs"></i> AIM ASSISTANCE</h3>
+                <h3><i class="fas fa-crosshairs"></i> <span id="aim-title">AIM</span></h3>
                 <ul>
-                    <li>Rage AimLock <span class="status-badge">DETECTED</span></li>
-                    <li>Triggerbot <span class="status-badge working-badge">ACTIVE</span></li>
-                    <li>Recoil Control <span class="status-badge">DETECTED</span></li>
-                    <li>Auto Pistol <span class="status-badge working-badge">ACTIVE</span></li>
+                    <li><span id="feature-aimlock">Rage AimLock</span> <span class="status-badge" id="status-detected">DETECTED</span></li>
+                    <li><span id="feature-trigger">Triggerbot</span> <span class="status-badge working-badge" id="status-active2">ACTIVE</span></li>
+                    <li><span id="feature-recoil">Recoil Control</span> <span class="status-badge" id="status-detected2">DETECTED</span></li>
+                    <li><span id="feature-pistol">Auto Pistol</span> <span class="status-badge working-badge" id="status-active3">ACTIVE</span></li>
                 </ul>
             </div>
 
             <div class="feature-card">
-                <h3><i class="fas fa-cogs"></i> MISC FEATURES</h3>
+                <h3><i class="fas fa-cogs"></i> <span id="misc-title">MISC</span></h3>
                 <ul>
-                    <li>Bunny Hop <span class="status-badge working-badge">ACTIVE</span></li>
-                    <li>Anti-Flash <span class="status-badge working-badge">ACTIVE</span></li>
-                    <li>Radar Hack <span class="status-badge">TESTING</span></li>
+                    <li><span id="feature-bunny">Bunny Hop</span> <span class="status-badge working-badge" id="status-active4">ACTIVE</span></li>
+                    <li><span id="feature-flash">Anti-Flash</span> <span class="status-badge working-badge" id="status-active5">ACTIVE</span></li>
+                    <li><span id="feature-radar">Radar Hack</span> <span class="status-badge working-badge" id="status-active6">ACTIVE</span></li>
                 </ul>
             </div>
         </div>
 
-        <!-- Social Media Section -->
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">99.8%</div>
+                <div class="stat-label" id="stat-undetected">Undetected</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2.4K</div>
+                <div class="stat-label" id="stat-users">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label" id="stat-support">Support</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">v2.0.0</div>
+                <div class="stat-label" id="stat-version">Latest Version</div>
+            </div>
+        </div>
+
+        <!-- Social Media -->
         <div class="social-section">
-            <h2 class="social-title">JOIN OUR COMMUNITY</h2>
+            <h2 class="social-title" id="social-title">JOIN OUR COMMUNITY</h2>
             <div class="social-grid">
-                <a href="https://discord.gg/DJrSCpNNXK" class="social-card discord" target="_blank">
+                <a href="https://discord.gg/your-link" class="social-card discord" target="_blank">
                     <div class="social-icon">
                         <i class="fab fa-discord"></i>
                     </div>
                     <div class="social-name">Discord</div>
-                    <div class="social-desc">Join our community for support and updates</div>
+                    <div class="social-desc" id="social-discord">Community & Support</div>
                 </a>
 
-                <a href="https://t.me/Bananhack_cc" class="social-card telegram" target="_blank">
+                <a href="https://t.me/your-channel" class="social-card telegram" target="_blank">
                     <div class="social-icon">
                         <i class="fab fa-telegram"></i>
                     </div>
                     <div class="social-name">Telegram</div>
-                    <div class="social-desc">Get instant news and announcements</div>
+                    <div class="social-desc" id="social-telegram">News & Updates</div>
                 </a>
 
-                <a href="https://www.youtube.com/@BanansenseOfficial" class="social-card youtube" target="_blank">
+                <a href="https://youtube.com/your-channel" class="social-card youtube" target="_blank">
                     <div class="social-icon">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <div class="social-name">YouTube</div>
-                    <div class="social-desc">Watch tutorials and showcases</div>
+                    <div class="social-desc" id="social-youtube">Tutorials</div>
+                </a>
+
+                <a href="https://github.com/your-repo" class="social-card github" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="social-name">GitHub</div>
+                    <div class="social-desc" id="social-github">Source Code</div>
                 </a>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">99%</div>
-                <div class="stat-label">Undetected</div>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-gold);">
+                <i class="fas fa-question-circle"></i> <span id="faq-title">FAQ</span>
+            </h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span id="faq1-question">Is this cheat detected?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span id="faq1-answer">Currently undetected. We update regularly to maintain security.</span>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">v1.0.0</div>
-                <div class="stat-label">Latest Version</div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span id="faq2-question">How often is it updated?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span id="faq2-answer">We update within 24 hours of any game patch or detection.</span>
+                </div>
             </div>
         </div>
 
+        <!-- Info Section -->
         <div class="info-section">
-            <p><i class="fas fa-shield-alt"></i> Version: Alpha 1.0.0 | Last Updated: Today | Compatibility: CS2 Latest Build</p>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
-                <i class="fas fa-exclamation-triangle"></i> Use at your own risk, you can be banned anyway!
-            </p>
+            <p><i class="fas fa-shield-alt"></i> <span id="info-text">Version: Premium Alpha 2.0.0 | Updated: Today | CS2 Latest Build</span></p>
         </div>
     </div>
 
     <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Status bar
+                status: "🛡️ UNDETECTED | 📊 ONLINE: {{count}} | 🕒 UPDATED: TODAY",
+                
+                // Header
+                title: "BANANSENSE CS2",
+                subtitle: "ULTIMATE EXTERNAL GAME ENHANCEMENT",
+                version: "PREMIUM ALPHA 2.0.0",
+                
+                // Download
+                download: "DOWNLOAD BANANSENSE",
+                downloading: "DOWNLOADING...",
+                
+                // Features
+                visual: "VISUAL",
+                aim: "AIM",
+                misc: "MISC",
+                
+                // Feature names
+                "feature-wallhack": "Wallhack ESP",
+                "feature-boxes": "Player Boxes",
+                "feature-bomb": "Bomb Timer",
+                "feature-weapon": "Weapon ESP",
+                "feature-aimlock": "Rage AimLock",
+                "feature-trigger": "Triggerbot",
+                "feature-recoil": "Recoil Control",
+                "feature-pistol": "Auto Pistol",
+                "feature-bunny": "Bunny Hop",
+                "feature-flash": "Anti-Flash",
+                "feature-radar": "Radar Hack",
+                
+                // Status badges
+                "status-not-working": "NOT WORKING",
+                "status-active": "ACTIVE",
+                "status-detected": "DETECTED",
+                
+                // Stats
+                "stat-undetected": "Undetected",
+                "stat-users": "Active Users",
+                "stat-support": "Support",
+                "stat-version": "Latest Version",
+                
+                // Social
+                "social-title": "JOIN OUR COMMUNITY",
+                "social-discord": "Community & Support",
+                "social-telegram": "News & Updates",
+                "social-youtube": "Tutorials",
+                "social-github": "Source Code",
+                
+                // FAQ
+                "faq-title": "FAQ",
+                "faq1-question": "Is this cheat detected?",
+                "faq1-answer": "Currently undetected. We update regularly to maintain security.",
+                "faq2-question": "How often is it updated?",
+                "faq2-answer": "We update within 24 hours of any game patch or detection.",
+                
+                // Info
+                "info-text": "Version: Premium Alpha 2.0.0 | Updated: Today | CS2 Latest Build"
+            },
+            
+            ru: {
+                // Status bar
+                status: "🛡️ НЕОБНАРУЖЕНО | 📊 ОНЛАЙН: {{count}} | 🕒 ОБНОВЛЕНО: СЕГОДНЯ",
+                
+                // Header
+                title: "BANANSENSE CS2",
+                subtitle: "ПРОДВИНУТОЕ ВНЕШНЕЕ УЛУЧШЕНИЕ ИГРЫ",
+                version: "ПРЕМИУМ АЛЬФА 2.0.0",
+                
+                // Download
+                download: "СКАЧАТЬ BANANSENSE",
+                downloading: "СКАЧИВАНИЕ...",
+                
+                // Features
+                visual: "ВИЗУАЛ",
+                aim: "ПРИЦЕЛ",
+                misc: "РАЗНОЕ",
+                
+                // Feature names
+                "feature-wallhack": "Wallhack ESP",
+                "feature-boxes": "Рамки игроков",
+                "feature-bomb": "Таймер бомбы",
+                "feature-weapon": "ESP оружия",
+                "feature-aimlock": "Жесткий прицел",
+                "feature-trigger": "Триггербот",
+                "feature-recoil": "Контроль отдачи",
+                "feature-pistol": "Авто-пистолет",
+                "feature-bunny": "Bunny Hop",
+                "feature-flash": "Анти-флеш",
+                "feature-radar": "Взлом радара",
+                
+                // Status badges
+                "status-not-working": "НЕ РАБОТАЕТ",
+                "status-active": "АКТИВНО",
+                "status-detected": "ОБНАРУЖЕНО",
+                
+                // Stats
+                "stat-undetected": "Необнаружено",
+                "stat-users": "Активных юзеров",
+                "stat-support": "Поддержка",
+                "stat-version": "Последняя версия",
+                
+                // Social
+                "social-title": "ПРИСОЕДИНЯЙТЕСЬ",
+                "social-discord": "Сообщество и поддержка",
+                "social-telegram": "Новости и обновления",
+                "social-youtube": "Обучение",
+                "social-github": "Исходный код",
+                
+                // FAQ
+                "faq-title": "ЧАВО",
+                "faq1-question": "Обнаружен ли этот чит?",
+                "faq1-answer": "В настоящее время не обнаружен. Мы регулярно обновляем для безопасности.",
+                "faq2-question": "Как часто обновляется?",
+                "faq2-answer": "Мы обновляем в течение 24 часов после любого патча игры.",
+                
+                // Info
+                "info-text": "Версия: Премиум Альфа 2.0.0 | Обновлено: Сегодня | CS2 Последняя версия"
+            },
+            
+            de: {
+                // Status bar
+                status: "🛡️ UNENTDECKT | 📊 ONLINE: {{count}} | 🕒 AKTUALISIERT: HEUTE",
+                
+                // Header
+                title: "BANANSENSE CS2",
+                subtitle: "ULTIMATIVE EXTERNE SPIELVERBESSERUNG",
+                version: "PREMIUM ALPHA 2.0.0",
+                
+                // Download
+                download: "BANANSENSE HERUNTERLADEN",
+                downloading: "LÄDT HERUNTER...",
+                
+                // Features
+                visual: "VISUELL",
+                aim: "ZIELEN",
+                misc: "SONSTIGES",
+                
+                // Feature names
+                "feature-wallhack": "Wallhack ESP",
+                "feature-boxes": "Spieler-Boxen",
+                "feature-bomb": "Bomben-Timer",
+                "feature-weapon": "Waffen-ESP",
+                "feature-aimlock": "Rage AimLock",
+                "feature-trigger": "Triggerbot",
+                "feature-recoil": "Rückstoßkontrolle",
+                "feature-pistol": "Auto-Pistole",
+                "feature-bunny": "Bunny Hop",
+                "feature-flash": "Anti-Blend",
+                "feature-radar": "Radar-Hack",
+                
+                // Status badges
+                "status-not-working": "NICHT AKTIV",
+                "status-active": "AKTIV",
+                "status-detected": "ERKANNT",
+                
+                // Stats
+                "stat-undetected": "Unentdeckt",
+                "stat-users": "Aktive Nutzer",
+                "stat-support": "Support",
+                "stat-version": "Neueste Version",
+                
+                // Social
+                "social-title": "TRITT UNSERER COMMUNITY BEI",
+                "social-discord": "Community & Support",
+                "social-telegram": "News & Updates",
+                "social-youtube": "Tutorials",
+                "social-github": "Quellcode",
+                
+                // FAQ
+                "faq-title": "FAQ",
+                "faq1-question": "Wird dieser Cheat erkannt?",
+                "faq1-answer": "Aktuell unentdeckt. Wir updaten regelmäßig für Sicherheit.",
+                "faq2-question": "Wie oft wird es aktualisiert?",
+                "faq2-answer": "Wir updaten innerhalb von 24 Stunden nach jedem Game-Patch.",
+                
+                // Info
+                "info-text": "Version: Premium Alpha 2.0.0 | Aktualisiert: Heute | CS2 Neueste Version"
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        function toggleLanguageDropdown() {
+            document.getElementById('langDropdown').classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            updateTexts();
+            
+            // Update dropdown UI
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.lang-option').classList.add('active');
+            
+            // Update current lang display
+            document.getElementById('current-lang').textContent = lang.toUpperCase();
+            
+            // Close dropdown
+            document.getElementById('langDropdown').classList.remove('show');
+        }
+
+        function updateTexts() {
+            const langData = translations[currentLanguage];
+            
+            // Update all elements with data
+            Object.keys(langData).forEach(key => {
+                const elements = document.querySelectorAll(`[id="${key}"]`);
+                let text = langData[key];
+                
+                // Replace dynamic values
+                if (key === 'status') {
+                    text = text.replace('{{count}}', document.getElementById('userCount').textContent);
+                }
+                
+                elements.forEach(element => {
+                    element.textContent = text;
+                });
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.language-selector')) {
+                document.getElementById('langDropdown').classList.remove('show');
+            }
+        });
+
         const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY';
-        const PREDEFINED_FILE_NAME = 'Banansense_Alpha.zip';
+        const PREDEFINED_FILE_NAME = 'Banansense_Alpha_2.zip';
 
         function downloadPredefinedFile() {
-            console.log('Initiating premium download:', PREDEFINED_FILE_URL);
-            
             const link = document.createElement('a');
             link.href = PREDEFINED_FILE_URL;
             link.download = PREDEFINED_FILE_NAME;
@@ -643,55 +818,43 @@
             link.click();
             document.body.removeChild(link);
 
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = PREDEFINED_FILE_URL;
-            document.body.appendChild(iframe);
-
+            // Visual feedback with translation
             const btn = document.querySelector('.download-btn');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-sync fa-spin"></i> DOWNLOADING...';
-            btn.style.opacity = '0.8';
+            const downloadingText = translations[currentLanguage].downloading;
+            btn.innerHTML = `<i class="fas fa-sync fa-spin"></i> ${downloadingText}`;
             btn.disabled = true;
             
             setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.opacity = '1';
+                const downloadText = translations[currentLanguage].download;
+                btn.innerHTML = `<i class="fas fa-download"></i> ${downloadText}`;
                 btn.disabled = false;
-            }, 3000);
+            }, 2000);
         }
 
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.feature-card, .social-card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
+        // FAQ functionality
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
 
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Live user counter
+        function updateUserCount() {
+            const baseUsers = 2447;
+            const randomChange = Math.floor(Math.random() * 21) - 10;
+            const currentUsers = Math.max(2400, baseUsers + randomChange);
+            document.getElementById('userCount').textContent = currentUsers.toLocaleString();
+            
+            // Update status text with new count
+            const statusText = translations[currentLanguage].status.replace('{{count}}', currentUsers.toLocaleString());
+            document.getElementById('status-text').textContent = statusText;
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        setInterval(updateUserCount, 10000);
+        updateUserCount();
 
-        document.querySelectorAll('.feature-card, .stat-item, .social-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTexts();
         });
     </script>
 </body>
