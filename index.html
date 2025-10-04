@@ -148,6 +148,9 @@
             padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: #cccccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .feature-card li:last-child {
@@ -163,12 +166,26 @@
             font-size: 0.8rem;
             margin-left: 10px;
             color: #ff4444;
+            font-weight: 600;
         }
 
         .working-badge {
-            background: rgba(0, 255, 0, 0.2);
-            border-color: rgba(0, 255, 0, 0.5);
-            color: #00ff00;
+            background: linear-gradient(45deg, rgba(255, 107, 0, 0.3), rgba(255, 215, 0, 0.3));
+            border: 1px solid rgba(255, 165, 0, 0.6);
+            color: #ffa500;
+            box-shadow: 0 2px 10px rgba(255, 165, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 2px 10px rgba(255, 165, 0, 0.3);
+                background: linear-gradient(45deg, rgba(255, 107, 0, 0.3), rgba(255, 215, 0, 0.3));
+            }
+            to {
+                box-shadow: 0 2px 15px rgba(255, 215, 0, 0.5);
+                background: linear-gradient(45deg, rgba(255, 165, 0, 0.4), rgba(255, 255, 0, 0.4));
+            }
         }
 
         .info-section {
@@ -191,6 +208,17 @@
             .download-section {
                 padding: 30px 20px;
             }
+            
+            .feature-card li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .status-badge {
+                margin-left: 0;
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
@@ -198,9 +226,10 @@
     <div class="container">
         <div class="header">
             <h1 class="title">BANANSENSE CS2</h1>
+            <p class="subtitle">Advanced External Game Enhancement Suite</p>
         </div>
 
-        <div class="download-section">
+<div class="download-section">
             <button class="download-btn" onclick="downloadPredefinedFile()">
                 DOWNLOAD BANANSENSE ALPHA
             </button>
@@ -268,8 +297,14 @@
             // Visual feedback
             const btn = document.querySelector('.download-btn');
             const originalText = btn.innerHTML;
-            btn.innerHTML = 'DOWNLOAD BANANSENSE ALPHA';
+            btn.innerHTML = 'DOWNLOADING...';
             btn.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+            }, 2000);
+        }
 
         // Add some interactive effects
         document.addEventListener('mousemove', (e) => {
