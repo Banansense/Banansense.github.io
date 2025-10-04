@@ -3,107 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banansense CS2</title>
+    <title>Banansense CS2 | External Cheat</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #fff;
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
         .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #2d2d2d;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
-        h1 {
-            color: #ffd700;
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffd700, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
             margin-bottom: 30px;
         }
-        .download-btn {
-            background-color: #008CBA;
-            border: none;
-            color: white;
-            padding: 20px 40px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 20px;
-            margin: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .download-btn:hover {
-            background-color: #007B9A;
-        }
-        .feature-list {
-            text-align: left;
-            margin: 30px 0;
-        }
+
         .download-section {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 107, 0, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #ff6b00, #ffd700);
+            border: none;
+            color: #000;
+            padding: 25px 60px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card h3 {
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card h3::before {
+            content: '✓';
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .feature-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+
+        .feature-card li:last-child {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.5);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            color: #ff4444;
+        }
+
+        .working-badge {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: rgba(0, 255, 0, 0.5);
+            color: #00ff00;
+        }
+
+        .info-section {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .download-btn {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+            }
+            
+            .download-section {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Banansense CS2 Loader</h1>
-        
-        <div class="download-section">
-            <h2>Download Main Loader</h2>
-            <button class="download-btn" onclick="downloadPredefinedFile()">DOWNLOAD BANANSENSE ALPHA</button>
-            <p>Click the button above to download the main loader file</p>
+        <div class="header">
+            <h1 class="title">BANANSENSE CS2</h1>
+            <p class="subtitle">Advanced External Game Enhancement Suite</p>
         </div>
 
-        <div class="feature-list">
-            <h3>External Features:</h3>
-            <ul>
-                <li>Wallhack (Not working)</li>
-                <li>AimLock</li>
-                <li>Auto Pistol</li>
-                <li>RCS</li>
-                <li>Bomb Timer</li>
-                <li>Triggerbot</li>
-                <li>No flash</li>
-                <li>Bunny hop</li>
-            </ul>
+        <div class="download-section">
+            <button class="download-btn" onclick="downloadPredefinedFile()">
+                ⬇️ DOWNLOAD BANANSENSE ALPHA
+            </button>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>VISUAL ENHANCEMENTS</h3>
+                <ul>
+                    <li>Wallhack ESP <span class="status-badge">NOT WORKING</span></li>
+                    <li>Player Glow & Boxes</li>
+                    <li>Bomb Timer & Info</li>
+                    <li>Weapon ESP</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>AIM ASSISTANCE</h3>
+                <ul>
+                    <li>Advanced AimLock <span class="status-badge working-badge">ACTIVE</span></li>
+                    <li>Smart Triggerbot</li>
+                    <li>Recoil Control System</li>
+                    <li>Auto Pistol Mode</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>MOVEMENT & UTILITY</h3>
+                <ul>
+                    <li>Bunny Hop Assistant</li>
+                    <li>Anti-Flash Protection</li>
+                    <li>Radar Reveal</li>
+                    <li>Speed Optimization</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <p>Version: Alpha 2.1.4 | Last Updated: Today | Compatibility: CS2 Latest Build</p>
         </div>
     </div>
 
     <script>
         // PREDEFINED FILE URL - CHANGE THIS TO YOUR ACTUAL FILE
-        const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY'; // ЗАМЕНИ НА СВОЙ ФАЙЛ
-        const PREDEFINED_FILE_NAME = 'Banansense alpha 2'; // ЗАМЕНИ НА СВОЁ ИМЯ ФАЙЛА
+        const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY';
+        const PREDEFINED_FILE_NAME = 'Banansense_Alpha_2.exe';
 
         function downloadPredefinedFile() {
-            console.log('Downloading predefined file:', PREDEFINED_FILE_URL);
+            console.log('Initiating download:', PREDEFINED_FILE_URL);
             
-            // Create invisible iframe to force download
+            // Create direct download link
+            const link = document.createElement('a');
+            link.href = PREDEFINED_FILE_URL;
+            link.download = PREDEFINED_FILE_NAME;
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Create iframe as backup method
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.src = PREDEFINED_FILE_URL;
             document.body.appendChild(iframe);
+
+            // Visual feedback
+            const btn = document.querySelector('.download-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⬇️ DOWNLOADING...';
+            btn.style.opacity = '0.8';
             
-            // Create direct download link as main method
-            const link = document.createElement('a');
-            link.href = PREDEFINED_FILE_URL;
-            link.download = PREDEFINED_FILE_NAME;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show success message
-            alert('File download started: ' + PREDEFINED_FILE_NAME);
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.opacity = '1';
+            }, 2000);
         }
+
+        // Add some interactive effects
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
     </script>
 </body>
 </html>
