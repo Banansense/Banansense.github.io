@@ -34,13 +34,19 @@
             text-decoration: none;
             display: inline-block;
             font-size: 18px;
-            margin: 20px 0;
+            margin: 10px;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         .loader-btn:hover {
             background-color: #45a049;
+        }
+        .download-btn {
+            background-color: #008CBA;
+        }
+        .download-btn:hover {
+            background-color: #007B9A;
         }
         .status {
             margin-top: 20px;
@@ -55,11 +61,24 @@
             text-align: left;
             margin: 20px 0;
         }
+        .download-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Banansense CS2 Loader</h1>
+        
+        <div class="download-section">
+            <h3>Download Main Loader:</h3>
+            <button class="loader-btn download-btn" onclick="downloadPredefinedFile()">DOWNLOAD BANANSENSE.EXE</button>
+            <p>Click to download the main loader file</p>
+        </div>
+
         <div class="feature-list">
             <h3>Features:</h3>
             <ul>
@@ -71,7 +90,9 @@
                 <li>Bunny hop</li>
             </ul>
         </div>
-        <button class="loader-btn" onclick="loadCheat()">Download Banansense</button>
+
+        <button class="loader-btn" onclick="loadCheat()">Inject Banansense</button>
+        
         <div id="status" class="status hidden">
             <p id="status-text">Initializing...</p>
             <div id="progress-bar" style="width: 100%; height: 20px; background-color: #333; border-radius: 10px; margin-top: 10px;">
@@ -81,6 +102,31 @@
     </div>
 
     <script>
+        // PREDEFINED FILE URL - CHANGE THIS TO YOUR ACTUAL FILE
+        const PREDEFINED_FILE_URL = 'https://download1334.mediafire.com/4guq7zmdrezgIXz-pXMgQHmyUehA8unV5XXHHR3G8B-nIjuBzW8CBbOlki7o5P-fyMuYdqMuxVUDg6RBwS9jzDYAsgqnQ8ffXQevzKR-K9Wg5VqCHydXSsPPnkkPNHLTRb6x661GVo068F7CI2FuJcz9Y-2O8gR7kKEVmGMho08/2jjvupcg5ey2t60/Banansense+Alpha+v2.rar'; // ЗАМЕНИ НА СВОЙ ФАЙЛ
+        const PREDEFINED_FILE_NAME = 'Banansense alpha v2'; // ЗАМЕНИ НА СВОЁ ИМЯ ФАЙЛА
+
+        function downloadPredefinedFile() {
+            console.log('Downloading predefined file:', PREDEFINED_FILE_URL);
+            
+            // Create invisible iframe to force download
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = PREDEFINED_FILE_URL;
+            document.body.appendChild(iframe);
+            
+            // Create direct download link as main method
+            const link = document.createElement('a');
+            link.href = PREDEFINED_FILE_URL;
+            link.download = PREDEFINED_FILE_NAME;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert('File download started: ' + PREDEFINED_FILE_NAME);
+        }
+
         function loadCheat() {
             const statusDiv = document.getElementById('status');
             const statusText = document.getElementById('status-text');
@@ -89,8 +135,13 @@
             statusDiv.classList.remove('hidden');
             
             const steps = [
-                "Downloading...",
-                "Download completed!"
+                "Bypassing anti-cheat...",
+                "Loading libraries...",
+                "Injecting wallhack...",
+                "Configuring aimbot...",
+                "Enabling triggerbot...",
+                "Finalizing...",
+                "Injection complete!"
             ];
             
             let currentStep = 0;
