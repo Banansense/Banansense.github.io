@@ -1,56 +1,116 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Генератор текста разными шрифтами</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
-    h1 { text-align: center; }
-    input { width: 100%; padding: 10px; margin: 15px 0; font-size: 18px; }
-    .result { background: white; padding: 10px; margin: 5px 0; border-radius: 8px; }
-    .style-name { font-weight: bold; color: #444; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banansense CS2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2d2d2d;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        h1 {
+            color: #ffd700;
+            margin-bottom: 30px;
+        }
+        .loader-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .loader-btn:hover {
+            background-color: #45a049;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+        }
+        .hidden {
+            display: none;
+        }
+        .feature-list {
+            text-align: left;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-  <h1>✨ Генератор текста разными "шрифтами"</h1>
-  <input id="inputText" type="text" placeholder="Введи текст здесь..." oninput="generate()">
-  <div id="output"></div>
+    <div class="container">
+        <h1>Banansense CS2 Loader</h1>
+        <div class="feature-list">
+            <h3>Features:</h3>
+            <ul>
+                <li>Wallhack (ESP)</li>
+                <li>Aimbot with smooth targeting</li>
+                <li>Triggerbot</li>
+                <li>Radar hack</li>
+                <li>No flash</li>
+                <li>Bunny hop</li>
+            </ul>
+        </div>
+        <button class="loader-btn" onclick="loadCheat()">Inject Banansense</button>
+        <div id="status" class="status hidden">
+            <p id="status-text">Initializing...</p>
+            <div id="progress-bar" style="width: 100%; height: 20px; background-color: #333; border-radius: 10px; margin-top: 10px;">
+                <div id="progress" style="width: 0%; height: 100%; background-color: #4CAF50; border-radius: 10px; transition: width 0.5s;"></div>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    const styles = {
-      "Обычный": t => t,
-      "Жирный": t => `**${t}**`,
-      "Курсив": t => `*${t}*`,
-      "Моноширинный": t => "`" + t + "`",
-      "Каллиграфия": t => toFancy(t, 0x1D4D0, 0x1D4EA),
-      "Модерн": t => toFancy(t, 0x1D63C, 0x1D656),
-      "Готика": t => toFancy(t, 0x1D56C, 0x1D586),
-      "Fullwidth": t => [...t].map(c =>
-        c >= "A" && c <= "Z" ? String.fromCharCode(c.charCodeAt(0) - 65 + 0xFF21) :
-        c >= "a" && c <= "z" ? String.fromCharCode(c.charCodeAt(0) - 97 + 0xFF41) : c
-      ).join(""),
-      "Квадраты": t => [...t].map(c => `🆂🆀🆄🅰🆁🅴`.includes(c.toUpperCase()) ? "🅿" : c).join("")
-    };
-
-    function toFancy(text, baseLower, baseUpper) {
-      return [...text].map(c => {
-        if (c >= "a" && c <= "z") return String.fromCodePoint(baseLower + (c.charCodeAt(0) - 97));
-        if (c >= "A" && c <= "Z") return String.fromCodePoint(baseUpper + (c.charCodeAt(0) - 65));
-        return c;
-      }).join("");
-    }
-
-    function generate() {
-      const text = document.getElementById("inputText").value;
-      const output = document.getElementById("output");
-      output.innerHTML = "";
-      for (let [name, fn] of Object.entries(styles)) {
-        const div = document.createElement("div");
-        div.className = "result";
-        div.innerHTML = `<span class="style-name">${name}:</span> ${fn(text)}`;
-        output.appendChild(div);
-      }
-    }
-  </script>
+    <script>
+        function loadCheat() {
+            const statusDiv = document.getElementById('status');
+            const statusText = document.getElementById('status-text');
+            const progress = document.getElementById('progress');
+            
+            statusDiv.classList.remove('hidden');
+            
+            const steps = [
+                "Bypassing anti-cheat...",
+                "Loading libraries...",
+                "Injecting wallhack...",
+                "Configuring aimbot...",
+                "Enabling triggerbot...",
+                "Finalizing...",
+                "Injection complete!"
+            ];
+            
+            let currentStep = 0;
+            
+            const interval = setInterval(() => {
+                if (currentStep < steps.length) {
+                    statusText.textContent = steps[currentStep];
+                    progress.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+                    currentStep++;
+                } else {
+                    clearInterval(interval);
+                    statusText.innerHTML = '<span style="color: #4CAF50">Banansense successfully loaded! Enjoy your game.</span>';
+                }
+            }, 800);
+        }
+    </script>
 </body>
 </html>
