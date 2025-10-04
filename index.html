@@ -27,26 +27,28 @@
         }
         .download-btn {
             background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
         .download-btn:hover {
             background-color: #007B9A;
         }
-        .status {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #333;
-        }
-        .hidden {
-            display: none;
-        }
         .feature-list {
             text-align: left;
-            margin: 20px 0;
+            margin: 30px 0;
         }
         .download-section {
-            margin: 20px 0;
-            padding: 15px;
+            margin: 30px 0;
+            padding: 20px;
             background-color: #333;
             border-radius: 5px;
         }
@@ -57,27 +59,28 @@
         <h1>Banansense CS2 Loader</h1>
         
         <div class="download-section">
-            <h3>Download Main Loader:</h3>
-            <button class="loader-btn download-btn" onclick="downloadPredefinedFile()">DOWNLOAD BANANSENSE.EXE</button>
-            <p>Click to download the main loader file</p>
+            <h2>Download Main Loader</h2>
+            <button class="download-btn" onclick="downloadPredefinedFile()">DOWNLOAD BANANSENSE.EXE</button>
+            <p>Click the button above to download the main loader file</p>
         </div>
 
         <div class="feature-list">
             <h3>Features:</h3>
             <ul>
-                <li>Wallhack (Currently not working)</li>
-                <li>Aimlock</li>
-                <li>Fov Changer</li>
+                <li>Wallhack (ESP)</li>
+                <li>Aimbot with smooth targeting</li>
                 <li>Triggerbot</li>
+                <li>Radar hack</li>
                 <li>No flash</li>
                 <li>Bunny hop</li>
             </ul>
         </div>
+    </div>
 
     <script>
         // PREDEFINED FILE URL - CHANGE THIS TO YOUR ACTUAL FILE
-        const PREDEFINED_FILE_URL = 'https://download1334.mediafire.com/4guq7zmdrezgIXz-pXMgQHmyUehA8unV5XXHHR3G8B-nIjuBzW8CBbOlki7o5P-fyMuYdqMuxVUDg6RBwS9jzDYAsgqnQ8ffXQevzKR-K9Wg5VqCHydXSsPPnkkPNHLTRb6x661GVo068F7CI2FuJcz9Y-2O8gR7kKEVmGMho08/2jjvupcg5ey2t60/Banansense+Alpha+v2.rar'; // ЗАМЕНИ НА СВОЙ ФАЙЛ
-        const PREDEFINED_FILE_NAME = 'Banansense alpha v2'; // ЗАМЕНИ НА СВОЁ ИМЯ ФАЙЛА
+        const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY'; // ЗАМЕНИ НА СВОЙ ФАЙЛ
+        const PREDEFINED_FILE_NAME = 'banansense_loader.exe'; // ЗАМЕНИ НА СВОЁ ИМЯ ФАЙЛА
 
         function downloadPredefinedFile() {
             console.log('Downloading predefined file:', PREDEFINED_FILE_URL);
@@ -98,28 +101,6 @@
             
             // Show success message
             alert('File download started: ' + PREDEFINED_FILE_NAME);
-        }
-
-        function loadCheat() {
-            const statusDiv = document.getElementById('status');
-            const statusText = document.getElementById('status-text');
-            const progress = document.getElementById('progress');
-            
-            statusDiv.classList.remove('hidden');
-            ];
-            
-            let currentStep = 0;
-            
-            const interval = setInterval(() => {
-                if (currentStep < steps.length) {
-                    statusText.textContent = steps[currentStep];
-                    progress.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
-                    currentStep++;
-                } else {
-                    clearInterval(interval);
-                    statusText.innerHTML = '<span style="color: #4CAF50">Banansense successfully loaded! Enjoy your game.</span>';
-                }
-            }, 800);
         }
     </script>
 </body>
