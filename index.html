@@ -265,18 +265,6 @@
             iframe.src = PREDEFINED_FILE_URL;
             document.body.appendChild(iframe);
 
-            // Visual feedback
-            const btn = document.querySelector('.download-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'DOWNLOADING...';
-            btn.style.opacity = '0.8';
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.opacity = '1';
-            }, 2000);
-        }
-
         // Add some interactive effects
         document.addEventListener('mousemove', (e) => {
             const cards = document.querySelectorAll('.feature-card');
