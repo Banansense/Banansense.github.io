@@ -16,6 +16,10 @@
             --primary-gold: #ffd700;
             --secondary-orange: #ff6b00;
             --accent-green: #00ff00;
+            --discord-purple: #5865F2;
+            --telegram-blue: #0088cc;
+            --youtube-red: #FF0000;
+            --github-white: #ffffff;
             --dark-bg: #0a0a0a;
             --card-bg: rgba(30, 30, 30, 0.7);
             --glow-intensity: 0.6;
@@ -324,6 +328,131 @@
             }
         }
 
+        /* Social Media Section */
+        .social-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.1) 0%, 
+                rgba(255, 107, 0, 0.1) 50%, 
+                transparent 100%);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .social-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px 20px;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 0.6s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .social-card:hover::before {
+            left: 100%;
+        }
+
+        .social-card.discord {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(88, 101, 242, 0.1));
+            border-color: rgba(88, 101, 242, 0.4);
+        }
+
+        .social-card.telegram {
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(0, 136, 204, 0.1));
+            border-color: rgba(0, 136, 204, 0.4);
+        }
+
+        .social-card.youtube {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .social-card.github {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card.discord .social-icon {
+            color: var(--discord-purple);
+        }
+
+        .social-card.telegram .social-icon {
+            color: var(--telegram-blue);
+        }
+
+        .social-card.youtube .social-icon {
+            color: var(--youtube-red);
+        }
+
+        .social-card.github .social-icon {
+            color: var(--github-white);
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.2);
+        }
+
+        .social-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .social-desc {
+            font-size: 0.9rem;
+            color: #cccccc;
+            opacity: 0.8;
+        }
+
         .info-section {
             text-align: center;
             margin-top: 60px;
@@ -385,6 +514,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .feature-card li {
                 flex-direction: column;
                 align-items: flex-start;
@@ -417,7 +550,7 @@
                 <ul>
                     <li>ESP <span class="status-badge">TESTING</span></li>
                     <li>Bomb Timer <span class="status-badge working-badge">ACTIVE</span></li>
-                    <li>Weapon ESP <span class="status-badge">NOT WORKING</span></li>
+                    <li>Weapon ESP <span class="status-badge">TESTING</span></li>
                 </ul>
             </div>
 
@@ -438,6 +571,36 @@
                     <li>Anti-Flash <span class="status-badge working-badge">ACTIVE</span></li>
                     <li>Radar Hack <span class="status-badge">TESTING</span></li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="social-section">
+            <h2 class="social-title">JOIN OUR COMMUNITY</h2>
+            <div class="social-grid">
+                <a href="https://discord.gg/DJrSCpNNXK" class="social-card discord" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="social-name">Discord</div>
+                    <div class="social-desc">Join our community for support and updates</div>
+                </a>
+
+                <a href="https://t.me/Bananhack_cc" class="social-card telegram" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="social-name">Telegram</div>
+                    <div class="social-desc">Get instant news and announcements</div>
+                </a>
+
+                <a href="https://www.youtube.com/@BanansenseOfficial" class="social-card youtube" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="social-name">YouTube</div>
+                    <div class="social-desc">Watch tutorials and showcases</div>
+                </a>
             </div>
         </div>
 
@@ -470,7 +633,7 @@
 
     <script>
         const PREDEFINED_FILE_URL = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY';
-        const PREDEFINED_FILE_NAME = 'Banansense_Premium_Alpha_2.0.0.zip';
+        const PREDEFINED_FILE_NAME = 'Banansense_Alpha.zip';
 
         function downloadPredefinedFile() {
             console.log('Initiating premium download:', PREDEFINED_FILE_URL);
@@ -503,7 +666,7 @@
         }
 
         document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.feature-card');
+            const cards = document.querySelectorAll('.feature-card, .social-card');
             cards.forEach(card => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -528,7 +691,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .stat-item, .social-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
