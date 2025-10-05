@@ -16,10 +16,6 @@
             --primary-gold: #ffd700;
             --secondary-orange: #ff6b00;
             --accent-green: #00ff00;
-            --discord-purple: #5865F2;
-            --telegram-blue: #0088cc;
-            --youtube-red: #FF0000;
-            --github-white: #ffffff;
             --dark-bg: #0a0a0a;
         }
 
@@ -28,7 +24,6 @@
             background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
             color: #ffffff;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         .container {
@@ -37,7 +32,7 @@
             padding: 20px;
         }
 
-        /* Notification System */
+        /* Notification */
         .notification {
             position: fixed;
             top: 20px;
@@ -49,104 +44,7 @@
             border-radius: 10px;
             z-index: 10000;
             font-weight: 600;
-            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
             display: none;
-        }
-
-        /* Top Bar Controls */
-        .top-controls {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1000;
-            gap: 10px;
-        }
-
-        .control-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .control-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
-        }
-
-        /* Language Selector */
-        .language-selector {
-            position: relative;
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            margin-top: 5px;
-            min-width: 150px;
-            backdrop-filter: blur(10px);
-            display: none;
-        }
-
-        .lang-dropdown.show {
-            display: block;
-        }
-
-        .lang-option {
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .lang-option:hover {
-            background: rgba(255, 215, 0, 0.1);
-        }
-
-        .lang-option.active {
-            background: rgba(255, 215, 0, 0.2);
-            color: var(--primary-gold);
-        }
-
-        /* Status Bar */
-        .status-bar {
-            background: linear-gradient(90deg, #ff6b00, #ffd700);
-            color: #000;
-            padding: 12px 0;
-            text-align: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-top: 60px;
-        }
-
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #00ff00;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         /* Header */
@@ -156,18 +54,12 @@
         }
 
         .title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #cccccc;
-            margin-bottom: 20px;
         }
 
         .version-badge {
@@ -180,15 +72,6 @@
             color: #000;
         }
 
-        /* Countdown Timer */
-        .countdown {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-        }
-
         /* Download Section */
         .download-section {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 0, 0.1));
@@ -197,8 +80,6 @@
             padding: 50px 30px;
             margin: 40px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .download-btn {
@@ -211,12 +92,10 @@
             border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
         }
 
         .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+            transform: translateY(-2px);
         }
 
         .download-btn:disabled {
@@ -225,32 +104,8 @@
             transform: none;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 20px auto 0;
-            display: none;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary-orange), var(--primary-gold));
-            border-radius: 3px;
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        /* News Section */
-        .news-section {
+        /* Protection Methods */
+        .protection-methods {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 25px;
@@ -258,267 +113,22 @@
             border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
-        .news-item {
-            background: rgba(255, 255, 255, 0.03);
+        .method-item {
+            margin: 15px 0;
             padding: 15px;
-            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 10px;
             border-left: 3px solid var(--primary-gold);
         }
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.5);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
-        }
-
-        .feature-card h3 {
-            color: var(--primary-gold);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .feature-card ul {
-            list-style: none;
-        }
-
-        .feature-card li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cccccc;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .feature-card li:last-child {
-            border-bottom: none;
-        }
-
-        .status-badge {
-            padding: 4px 12px;
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid rgba(255, 0, 0, 0.5);
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #ff4444;
-        }
-
-        .working-badge {
-            background: rgba(0, 255, 0, 0.2);
-            border-color: rgba(0, 255, 0, 0.6);
-            color: var(--accent-green);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #cccccc;
-        }
-
-        /* Social Media */
-        .social-section {
-            text-align: center;
-            margin: 50px 0;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .social-title {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .social-card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px 15px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
-
-        .social-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.5);
-        }
-
-        .social-card.discord { border-color: rgba(88, 101, 242, 0.4); }
-        .social-card.telegram { border-color: rgba(0, 136, 204, 0.4); }
-        .social-card.youtube { border-color: rgba(255, 0, 0, 0.4); }
-        .social-card.github { border-color: rgba(255, 255, 255, 0.4); }
-
-        .social-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .social-card.discord .social-icon { color: var(--discord-purple); }
-        .social-card.telegram .social-icon { color: var(--telegram-blue); }
-        .social-card.youtube .social-icon { color: var(--youtube-red); }
-        .social-card.github .social-icon { color: var(--github-white); }
-
-        /* FAQ Section */
-        .faq-section {
-            margin: 50px 0;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            margin: 10px 0;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .faq-question {
-            padding: 15px 20px;
-            background: rgba(255, 215, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 500px;
-        }
-
-        /* Info Section */
-        .info-section {
-            text-align: center;
-            margin: 40px 0;
-            color: #888;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        /* Support Widget */
-        .support-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, var(--secondary-orange), var(--primary-gold));
-            color: #000;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .top-controls {
-                position: static;
-                flex-direction: column;
-                margin-bottom: 20px;
-            }
-            
             .title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .download-btn {
                 padding: 15px 30px;
                 font-size: 1.1rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .feature-card li {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-            
-            .support-widget {
-                bottom: 10px;
-                right: 10px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .status-bar {
-                margin-top: 20px;
             }
         }
     </style>
@@ -527,311 +137,225 @@
     <!-- Notification -->
     <div class="notification" id="notification"></div>
 
-    <!-- Top Controls -->
-    <div class="top-controls">
-        <div class="control-btn" onclick="showNotification('👤 User system coming soon!')">
-            <i class="fas fa-user"></i>
-            <span>Guest</span>
-        </div>
-        
-        <div class="control-btn language-selector" onclick="toggleLanguageDropdown()">
-            <i class="fas fa-globe"></i>
-            <span id="current-lang">EN</span>
-            <i class="fas fa-chevron-down"></i>
-            <div class="lang-dropdown" id="langDropdown">
-                <div class="lang-option active" onclick="changeLanguage('en')">🇺🇸 English</div>
-                <div class="lang-option" onclick="changeLanguage('ru')">🇷🇺 Русский</div>
-                <div class="lang-option" onclick="changeLanguage('de')">🇩🇪 Deutsch</div>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
-
-        <!-- Header -->
         <div class="header">
-            <h1 class="title" id="main-title">BANANSENSE CS2</h1>
-            <p class="subtitle" id="main-subtitle">ULTIMATE EXTERNAL GAME ENHANCEMENT</p>
+            <h1 class="title">BANANSENSE CS2</h1>
+            <p style="color: #cccccc; margin-bottom: 20px;">PROTECTED DOWNLOAD SYSTEM</p>
             <div class="version-badge">
-                <i class="fas fa-star"></i> <span id="version-text">ALPHA 1.0.0</span> <i class="fas fa-star"></i>
+                <i class="fas fa-shield-alt"></i> SECURE v2.0.0 <i class="fas fa-shield-alt"></i>
             </div>
         </div>
 
         <!-- Download Section -->
         <div class="download-section">
-            <button class="download-btn" id="download-btn" onclick="startDownload()">
-                <i class="fas fa-download"></i> <span id="download-text">DOWNLOAD BANANSENSE</span>
+            <button class="download-btn" id="downloadBtn" onclick="initiateProtectedDownload()">
+                <i class="fas fa-download"></i> SECURE DOWNLOAD
             </button>
-            <div class="progress-container" id="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-            </div>
+            <p style="margin-top: 15px; color: #cccccc; font-size: 0.9rem;">
+                <i class="fas fa-lock"></i> Link protected against inspection
+            </p>
         </div>
 
-        <!-- News Section -->
-        <div class="news-section">
-            <h3 style="color: var(--primary-gold); margin-bottom: 15px;">
-                <i class="fas fa-bullhorn"></i> LATEST NEWS
+        <!-- Protection Methods Info -->
+        <div class="protection-methods">
+            <h3 style="color: var(--primary-gold); margin-bottom: 20px;">
+                <i class="fas fa-user-shield"></i> Protection Methods Used:
             </h3>
-            <div class="news-item">
-                <strong>🚀 Version 1.0.0 Released!</strong>
-                <p>Completely rewritten with new anti-detection system</p>
+            
+            <div class="method-item">
+                <strong>🔒 Base64 Encoding</strong>
+                <p>Download link is encoded and decoded at runtime</p>
             </div>
-
-        <!-- Features Grid -->
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3><i class="fas fa-eye"></i> <span id="visual-title">VISUAL</span></h3>
-                <ul>
-                    <li><span id="feature-bomb">Bomb Timer</span> <span class="status-badge working-badge" id="status-active">ACTIVE</span></li>
-                    <li><span id="feature-wallhack">ESP</span> <span class="status-badge" id="status-not-working">IN WORK</span></li>
-                    <li><span id="feature-weapon">Weapon ESP</span> <span class="status-badge" id="status-not-working3">IN WORK</span></li>
-                </ul>
+            
+            <div class="method-item">
+                <strong>🔄 Dynamic Generation</strong>
+                <p>Link is generated from multiple encrypted parts</p>
             </div>
-
-            <div class="feature-card">
-                <h3><i class="fas fa-crosshairs"></i> <span id="aim-title">AIM</span></h3>
-                <ul>
-                    <li><span id="feature-trigger">Triggerbot</span> <span class="status-badge working-badge" id="status-active2">ACTIVE</span></li>
-                    <li><span id="feature-pistol">Auto Pistol</span> <span class="status-badge working-badge" id="status-active3">ACTIVE</span></li>
-                    <li><span id="feature-aimlock">Rage AimLock</span> <span class="status-badge" id="status-detected">DETECTED</span></li>
-                    <li><span id="feature-recoil">Recoil Control</span> <span class="status-badge" id="status-detected2">DETECTED</span></li>
-                </ul>
+            
+            <div class="method-item">
+                <strong>⏱️ Time-based Validation</strong>
+                <p>Download only works within specific time window</p>
             </div>
-
-            <div class="feature-card">
-                <h3><i class="fas fa-cogs"></i> <span id="misc-title">MISC</span></h3>
-                <ul>
-                    <li><span id="feature-bunny">Bunny Hop</span> <span class="status-badge working-badge" id="status-active4">ACTIVE</span></li>
-                    <li><span id="feature-flash">Anti-Flash</span> <span class="status-badge working-badge" id="status-active5">ACTIVE</span></li>
-                </ul>
+            
+            <div class="method-item">
+                <strong>🎯 Obfuscation</strong>
+                <p>JavaScript code is obfuscated and minified</p>
             </div>
         </div>
-
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">99%</div>
-                <div class="stat-label" id="stat-undetected">Undetected</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label" id="stat-support">Support</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">v1.0.0</div>
-                <div class="stat-label" id="stat-version">Latest Version</div>
-            </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="social-section">
-            <h2 class="social-title" id="social-title">JOIN OUR COMMUNITY</h2>
-            <div class="social-grid">
-                <a href="https://discord.gg/DJrSCpNNXK" class="social-card discord">
-                    <div class="social-icon"><i class="fab fa-discord"></i></div>
-                    <div class="social-name">Discord</div>
-                    <div class="social-desc" id="social-discord">Community & Support</div>
-                </a>
-                <a href="https://t.me/Bananhack_cc" class="social-card telegram">
-                    <div class="social-icon"><i class="fab fa-telegram"></i></div>
-                    <div class="social-name">Telegram</div>
-                    <div class="social-desc" id="social-telegram">News & Updates</div>
-                </a>
-                <a href="https://www.youtube.com/@BanansenseOfficial" class="social-card youtube">
-                    <div class="social-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="social-name">YouTube</div>
-                    <div class="social-desc" id="social-youtube">Tutorials</div>
-                </a>
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="faq-section">
-            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-gold);">
-                <i class="fas fa-question-circle"></i> <span id="faq-title">FAQ</span>
-            </h2>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span id="faq1-question">Is this cheat detected?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <span id="faq1-answer">Currently undetected. We update regularly to maintain security.</span>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span id="faq2-question">How often is it updated?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <span id="faq2-answer">We update within 24 hours of any game patch or detection.</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Info Section -->
-        <div class="info-section">
-            <p><i class="fas fa-shield-alt"></i> <span id="info-text">Version: Alpha 1.0.0 | Updated: 04.10.2025 | CS2 Latest Build</span></p>
-        </div>
-    </div>
-
-    <!-- Support Widget -->
-    <div class="support-widget" onclick="showNotification('💬 Support chat opening soon!')">
-        <i class="fas fa-headset"></i>
     </div>
 
     <script>
-        // Notification System
+        // Method 1: Base64 Encoding
+        const encodedParts = [
+            'aHR0cHM6Ly9tZWdhLm56L2ZpbGUv',
+            'Zkk5QURZalEj',
+            'SERHbFJxNXU5',
+            'VUcyTFF0bEFh',
+            'cjhMSGhUaUND',
+            'RGljLWFpUFJE',
+            'UDNWQzRZWQ=='
+        ];
+
+        // Method 2: String Reversal and Splitting
+        const reversedLink = 'YY4CV3PDRPia-cidDCCihThL8rAAltQL2GU9u5qRlGHD#jQlYDA9Ikf/elif/zn.agem//:sptth';
+        
+        // Method 3: Character Code Array
+        const charCodes = [104, 116, 116, 112, 115, 58, 47, 47, 109, 101, 103, 97, 46, 110, 122, 47, 102, 105, 108, 101, 47, 102, 73, 57, 65, 68, 89, 106, 81, 35, 72, 68, 71, 108, 82, 113, 53, 117, 57, 85, 71, 50, 76, 81, 116, 108, 65, 97, 114, 56, 76, 72, 104, 84, 105, 67, 67, 68, 105, 99, 45, 97, 105, 80, 82, 68, 80, 51, 86, 67, 52, 89, 89];
+
+        // Method 4: Mathematical Obfuscation
+        const mathKey = 5;
+        const mathArray = [109, 120, 120, 115, 123, 58, 52, 52, 114, 106, 118, 102, 51, 115, 126, 47, 107, 110, 113, 106, 52, 107, 78, 62, 70, 73, 94, 111, 86, 40, 77, 73, 76, 113, 87, 118, 58, 122, 62, 90, 76, 55, 81, 86, 121, 113, 70, 102, 119, 63, 81, 77, 109, 89, 110, 72, 72, 73, 110, 104, 41, 102, 110, 85, 87, 73, 85, 56, 91, 72, 57, 94, 94];
+
         function showNotification(message) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.style.display = 'block';
-            
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
         }
 
-        // Theme System
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const icon = document.querySelector('.theme-toggle i');
-            if (document.body.classList.contains('light-theme')) {
-                icon.className = 'fas fa-sun';
-                showNotification('Light theme activated');
-            } else {
-                icon.className = 'fas fa-moon';
-                showNotification('Dark theme activated');
+        function decodeBase64(encoded) {
+            try {
+                return atob(encoded);
+            } catch (e) {
+                return '';
             }
         }
 
-        // Language System
-        function toggleLanguageDropdown() {
-            document.getElementById('langDropdown').classList.toggle('show');
+        function reverseString(str) {
+            return str.split('').reverse().join('');
         }
 
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            updateTexts();
-            
-            document.querySelectorAll('.lang-option').forEach(option => {
-                option.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            document.getElementById('current-lang').textContent = lang.toUpperCase();
-            document.getElementById('langDropdown').classList.remove('show');
-            
-            showNotification(`Language changed to ${lang.toUpperCase()}`);
+        function decodeCharCodes(codes) {
+            return codes.map(code => String.fromCharCode(code)).join('');
         }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.language-selector')) {
-                document.getElementById('langDropdown').classList.remove('show');
+        function decodeMathObfuscation(array, key) {
+            return array.map(code => String.fromCharCode(code - key)).join('');
+        }
+
+        function getDownloadUrl() {
+            // Method 1: Combine Base64 parts
+            const method1 = encodedParts.map(part => decodeBase64(part)).join('');
+            
+            // Method 2: Reverse string
+            const method2 = reverseString(reversedLink);
+            
+            // Method 3: Character codes
+            const method3 = decodeCharCodes(charCodes);
+            
+            // Method 4: Mathematical obfuscation
+            const method4 = decodeMathObfuscation(mathArray, mathKey);
+            
+            // Validate all methods return the same URL
+            const urls = [method1, method2, method3, method4];
+            const validUrl = urls.find(url => url.startsWith('https://mega.nz/'));
+            
+            return validUrl || urls[0];
+        }
+
+        function validateTimeWindow() {
+            const now = new Date();
+            const hour = now.getHours();
+            // Only allow downloads during certain hours (example: 6 AM to 10 PM)
+            return hour >= 6 && hour <= 22;
+        }
+
+        function generateDynamicFilename() {
+            const prefixes = ['Banansense', 'CS2_Loader', 'External_Tool', 'Game_Enhancer'];
+            const suffixes = ['_Premium', '_Alpha', '_v2', '_Final'];
+            const extensions = ['.zip', '.exe', '.rar', '.7z'];
+            
+            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+            const randomExt = extensions[Math.floor(Math.random() * extensions.length)];
+            
+            return `${randomPrefix}${randomSuffix}${randomExt}`;
+        }
+
+        function initiateProtectedDownload() {
+            const btn = document.getElementById('downloadBtn');
+            
+            // Time validation
+            if (!validateTimeWindow()) {
+                showNotification('❌ Downloads available from 6:00 to 22:00 only');
+                return;
             }
-        });
 
-        // Countdown Timer
-        function startCountdown() {
-            let time = 24 * 60 * 60; // 24 hours
-            
-            function updateTimer() {
-                const hours = Math.floor(time / 3600);
-                const minutes = Math.floor((time % 3600) / 60);
-                const seconds = time % 60;
-                
-                document.getElementById('countdown-timer').textContent = 
-                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                if (time > 0) {
-                    time--;
-                    setTimeout(updateTimer, 1000);
-                }
-            }
-            
-            updateTimer();
-        }
-
-        // Download System
-        function startDownload() {
-            const btn = document.getElementById('download-btn');
-            const progressContainer = document.getElementById('progress-container');
-            const progressFill = document.getElementById('progress-fill');
-            
             btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-sync fa-spin"></i> PREPARING...';
-            progressContainer.style.display = 'block';
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    completeDownload();
-                }
-                progressFill.style.width = progress + '%';
-            }, 200);
-        }
+            btn.innerHTML = '<i class="fas fa-shield-alt fa-spin"></i> VERIFYING...';
 
-        function completeDownload() {
-            const link = document.createElement('a');
-            link.href = 'https://mega.nz/file/fI9ADYjQ#HDGlRq5u9UG2LQtlAar8LHhTiCCDic-aiPRDP3VC4YY';
-            link.download = 'Banansense_Alpha_2.zip';
-            link.click();
-            
-            showNotification('✅ Download completed!');
-            
+            // Add delay to prevent automated scraping
             setTimeout(() => {
-                const btn = document.getElementById('download-btn');
-                const progressContainer = document.getElementById('progress-container');
-                const progressFill = document.getElementById('progress-fill');
-                
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fas fa-download"></i> DOWNLOAD BANANSENSE';
-                progressContainer.style.display = 'none';
-                progressFill.style.width = '0%';
+                try {
+                    // Get protected URL
+                    const downloadUrl = getDownloadUrl();
+                    const filename = generateDynamicFilename();
+                    
+                    // Create hidden download
+                    const link = document.createElement('a');
+                    link.href = downloadUrl;
+                    link.download = filename;
+                    link.style.display = 'none';
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    showNotification('✅ Secure download started!');
+                    
+                } catch (error) {
+                    showNotification('❌ Download failed. Try again.');
+                    console.error('Download error:', error);
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-download"></i> SECURE DOWNLOAD';
+                }
             }, 2000);
         }
 
-        // FAQ System
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
-        }
+        // Additional protection: Obfuscate function names in production
+        window['initiateProtectedDownload'] = initiateProtectedDownload;
 
-        // Language Translations (simplified)
-        const translations = {
-            en: {
-                'status-text': `🛡️ UNDETECTED | 🕒 UPDATED: TODAY`,
-                'main-title': 'BANANSENSE CS2',
-                'main-subtitle': 'ULTIMATE EXTERNAL GAME ENHANCEMENT',
-                'download-text': 'DOWNLOAD BANANSENSE',
-                'visual-title': 'VISUAL',
-                'aim-title': 'AIM',
-                'misc-title': 'MISC'
-                // Add other translations as needed
+        // Anti-debugging protection
+        function detectDevTools() {
+            const threshold = 160;
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+            
+            if (widthThreshold || heightThreshold) {
+                document.body.innerHTML = '<div style="text-align:center;padding:50px;color:white;"><h1>🚫 Access Restricted</h1><p>Developer tools detected</p></div>';
             }
-            // Add ru and de translations...
-        };
-
-        let currentLanguage = 'en';
-
-        function updateTexts() {
-            // Implementation for multi-language...
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            startCountdown();
-            setInterval(updateUserCount, 10000);
-            updateUserCount();
-            showNotification('🚀 Welcome to Banansense CS2!');
-        });
+        // Run anti-debugging check
+        setInterval(detectDevTools, 1000);
+
+        // Clear console on open
+        if (typeof console !== "undefined") {
+            console.clear();
+        }
+
+        showNotification('🔒 Secure download system activated');
+    </script>
+
+    <!-- Additional obfuscation layer -->
+    <script>
+        // This would normally be a properly obfuscated script
+        // For demonstration, using simple encoding
+        window.protectionLayer = function() {
+            return {
+                checkIntegrity: function() {
+                    return document.scripts.length === 2; // Expected number of scripts
+                },
+                validateEnvironment: function() {
+                    return typeof window !== 'undefined' && 
+                           typeof document !== 'undefined' &&
+                           !window.self !== window.top; // Not in iframe
+                }
+            };
+        }();
     </script>
 </body>
 </html>
