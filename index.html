@@ -32,22 +32,6 @@
             padding: 20px;
         }
 
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b00, #ffd700);
-            color: #000;
-            padding: 15px 25px;
-            border-radius: 10px;
-            z-index: 10000;
-            font-weight: 600;
-            display: none;
-        }
-
-        /* Header */
         .header {
             text-align: center;
             margin: 40px 0;
@@ -62,150 +46,214 @@
             margin-bottom: 15px;
         }
 
-        .version-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--secondary-orange), var(--primary-gold));
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #000;
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
         }
 
-        /* Download Section */
-        .download-section {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 0, 0.1));
+        .download-card {
+            background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            padding: 50px 30px;
-            margin: 40px 0;
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
         }
 
         .download-btn {
             background: linear-gradient(45deg, var(--secondary-orange), var(--primary-gold));
             border: none;
             color: #000;
-            padding: 20px 50px;
-            font-size: 1.3rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             font-weight: 700;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .download-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Protection Methods */
-        .protection-methods {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .method-item {
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
             border-radius: 10px;
-            border-left: 3px solid var(--primary-gold);
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
         }
 
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2rem;
-            }
-            
-            .download-btn {
-                padding: 15px 30px;
-                font-size: 1.1rem;
-            }
+        .version-badge {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b00, #ffd700);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 10000;
+            font-weight: 600;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Notification -->
     <div class="notification" id="notification"></div>
 
     <div class="container">
         <div class="header">
             <h1 class="title">BANANSENSE CS2</h1>
-            <p style="color: #cccccc; margin-bottom: 20px;">PROTECTED DOWNLOAD SYSTEM</p>
-            <div class="version-badge">
-                <i class="fas fa-shield-alt"></i> SECURE v2.0.0 <i class="fas fa-shield-alt"></i>
-            </div>
+            <p style="color: #cccccc;">Multiple Download Options</p>
         </div>
 
-        <!-- Download Section -->
-        <div class="download-section">
-            <button class="download-btn" id="downloadBtn" onclick="initiateProtectedDownload()">
-                <i class="fas fa-download"></i> SECURE DOWNLOAD
-            </button>
-            <p style="margin-top: 15px; color: #cccccc; font-size: 0.9rem;">
-                <i class="fas fa-lock"></i> Link protected against inspection
-            </p>
-        </div>
+        <div class="downloads-grid">
+            <!-- Download Card 1 -->
+            <div class="download-card">
+                <h3>🔄 Main Loader</h3>
+                <div class="version-badge">v2.0.0</div>
+                <p>Primary cheat loader with all features</p>
+                <button class="download-btn" onclick="downloadFile('main')">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
 
-        <!-- Protection Methods Info -->
-        <div class="protection-methods">
-            <h3 style="color: var(--primary-gold); margin-bottom: 20px;">
-                <i class="fas fa-user-shield"></i> Protection Methods Used:
-            </h3>
-            
-            <div class="method-item">
-                <strong>🔒 Base64 Encoding</strong>
-                <p>Download link is encoded and decoded at runtime</p>
+            <!-- Download Card 2 -->
+            <div class="download-card">
+                <h3>⚡ Lite Version</h3>
+                <div class="version-badge">v1.8.5</div>
+                <p>Lightweight version for low-end PCs</p>
+                <button class="download-btn" onclick="downloadFile('lite')">
+                    <i class="fas fa-download"></i> Download
+                </button>
             </div>
-            
-            <div class="method-item">
-                <strong>🔄 Dynamic Generation</strong>
-                <p>Link is generated from multiple encrypted parts</p>
+
+            <!-- Download Card 3 -->
+            <div class="download-card">
+                <h3>🔧 Config Tool</h3>
+                <div class="version-badge">v1.2.3</div>
+                <p>Configuration and settings manager</p>
+                <button class="download-btn" onclick="downloadFile('config')">
+                    <i class="fas fa-download"></i> Download
+                </button>
             </div>
-            
-            <div class="method-item">
-                <strong>⏱️ Time-based Validation</strong>
-                <p>Download only works within specific time window</p>
-            </div>
-            
-            <div class="method-item">
-                <strong>🎯 Obfuscation</strong>
-                <p>JavaScript code is obfuscated and minified</p>
+
+            <!-- Download Card 4 -->
+            <div class="download-card">
+                <h3>🎨 Skin Changer</h3>
+                <div class="version-badge">v1.5.0</div>
+                <p>Custom skins and visual modifications</p>
+                <button class="download-btn" onclick="downloadFile('skins')">
+                    <i class="fas fa-download"></i> Download
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Method 1: Base64 Encoding
-        const encodedParts = [
-            'aHR0cHM6Ly9tZWdhLm56L2ZpbGUv',
-            'Zkk5QURZalEj',
-            'SERHbFJxNXU5',
-            'VUcyTFF0bEFh',
-            'cjhMSGhUaUND',
-            'RGljLWFpUFJE',
-            'UDNWQzRZWQ=='
+        // 🔧 КАК ДОБАВИТЬ НОВУЮ ССЫЛКУ - 4 СПОСОБА:
+
+        // СПОСОБ 1: Прямое добавление в объект links
+        const links = {
+            'main': {
+                encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZkk5QURZalEjSERHbFJxNXU5VUcyTFF0bEFhcjhMSGhUaUNDRGljLWFpUFJEUDNWQzRZWQ==',
+                filename: 'Banansense_Main_v2.0.0.zip'
+            },
+            'lite': {
+                encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZXhhbXBsZV9saXRlX2xpbms=',
+                filename: 'Banansense_Lite_v1.8.5.zip'
+            },
+            'config': {
+                encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvY29uZmlnX3Rvb2xfbGluaw==',
+                filename: 'Config_Tool_v1.2.3.exe'
+            },
+            'skins': {
+                encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvc2tpbl9jaGFuZ2VyX2xpbms=',
+                filename: 'Skin_Changer_v1.5.0.rar'
+            }
+            // 🆕 ДОБАВЬТЕ НОВУЮ ССЫЛКУ ЗДЕСЬ:
+            // 'newlink': {
+            //     encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvVEZsMkhSQlojc2VFb2o4VXNUS1l6YmxjOFRKdFVGM01QNHc0YXVrQ0xCdXg0blpKSWJOUQ==',
+            //     filename: 'Имя_Файла.расширение'
+            // }
+        };
+
+        // СПОСОБ 2: Динамическое добавление ссылок
+        function addNewLink(key, base64Url, fileName) {
+            links[key] = {
+                encoded: base64Url,
+                filename: fileName
+            };
+            console.log(`✅ Added new link: ${key}`);
+        }
+
+        // Пример добавления новой ссылки:
+        // addNewLink('update', 'aHR0cHM6Ly9leGFtcGxlLmNvbS91cGRhdGU=', 'Update_Patch.exe');
+
+        // СПОСОБ 3: Массив ссылок с автоматической обработкой
+        const linkArray = [
+            { id: 'main', name: 'Main Loader', url: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZkk5QURZalEjSERHbFJxNXU5VUcyTFF0bEFhcjhMSGhUaUNDRGljLWFpUFJEUDNWQzRZWQ==', file: 'Banansense_Main.zip' },
+            { id: 'lite', name: 'Lite Version', url: 'aHR0cHM6Ly9leGFtcGxlLmNvbS9saXRl', file: 'Lite_Version.zip' }
+            // 🆕 ДОБАВЬТЕ В МАССИВ:
+            // { id: 'new', name: 'New Tool', url: 'BASE64_LINK', file: 'filename.ext' }
         ];
 
-        // Method 2: String Reversal and Splitting
-        const reversedLink = 'YY4CV3PDRPia-cidDCCihThL8rAAltQL2GU9u5qRlGHD#jQlYDA9Ikf/elif/zn.agem//:sptth';
-        
-        // Method 3: Character Code Array
-        const charCodes = [104, 116, 116, 112, 115, 58, 47, 47, 109, 101, 103, 97, 46, 110, 122, 47, 102, 105, 108, 101, 47, 102, 73, 57, 65, 68, 89, 106, 81, 35, 72, 68, 71, 108, 82, 113, 53, 117, 57, 85, 71, 50, 76, 81, 116, 108, 65, 97, 114, 56, 76, 72, 104, 84, 105, 67, 67, 68, 105, 99, 45, 97, 105, 80, 82, 68, 80, 51, 86, 67, 52, 89, 89];
+        // СПОСОБ 4: Внешний конфигурационный файл (рекомендуется)
+        async function loadLinksFromConfig() {
+            try {
+                // В реальном проекте загружайте с сервера
+                const config = {
+                    'main': 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZkk5QURZalEjSERHbFJxNXU5VUcyTFF0bEFhcjhMSGhUaUNDRGljLWFpUFJEUDNWQzRZWQ==',
+                    'lite': 'aHR0cHM6Ly9leGFtcGxlLmNvbS9saXRl',
+                    'new': 'BASE64_NEW_LINK' // 🆕 Добавьте новую ссылку
+                };
+                return config;
+            } catch (error) {
+                console.error('Error loading config:', error);
+                return {};
+            }
+        }
 
-        // Method 4: Mathematical Obfuscation
-        const mathKey = 5;
-        const mathArray = [109, 120, 120, 115, 123, 58, 52, 52, 114, 106, 118, 102, 51, 115, 126, 47, 107, 110, 113, 106, 52, 107, 78, 62, 70, 73, 94, 111, 86, 40, 77, 73, 76, 113, 87, 118, 58, 122, 62, 90, 76, 55, 81, 86, 121, 113, 70, 102, 119, 63, 81, 77, 109, 89, 110, 72, 72, 73, 110, 104, 41, 102, 110, 85, 87, 73, 85, 56, 91, 72, 57, 94, 94];
+        // Основная функция скачивания
+        function downloadFile(type) {
+            const linkData = links[type];
+            if (!linkData) {
+                showNotification('❌ Download not available');
+                return;
+            }
 
+            try {
+                // Декодируем Base64 ссылку
+                const downloadUrl = atob(linkData.encoded);
+                const filename = linkData.filename;
+
+                // Создаем скрытую ссылку для скачивания
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = filename;
+                link.style.display = 'none';
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showNotification(`✅ Downloading: ${filename}`);
+                
+            } catch (error) {
+                showNotification('❌ Download failed');
+                console.error('Download error:', error);
+            }
+        }
+
+        // Функция уведомлений
         function showNotification(message) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -215,147 +263,76 @@
             }, 3000);
         }
 
-        function decodeBase64(encoded) {
+        // 🛠️ УТИЛИТЫ ДЛЯ РАБОТЫ С ССЫЛКАМИ:
+
+        // Конвертер в Base64 (для новых ссылок)
+        function encodeToBase64(url) {
+            return btoa(url);
+        }
+
+        // Пример использования:
+        // console.log(encodeToBase64('https://example.com/your-file.zip'));
+
+        // Проверка валидности Base64
+        function isValidBase64(str) {
             try {
-                return atob(encoded);
-            } catch (e) {
-                return '';
+                return btoa(atob(str)) === str;
+            } catch (err) {
+                return false;
             }
         }
 
-        function reverseString(str) {
-            return str.split('').reverse().join('');
-        }
-
-        function decodeCharCodes(codes) {
-            return codes.map(code => String.fromCharCode(code)).join('');
-        }
-
-        function decodeMathObfuscation(array, key) {
-            return array.map(code => String.fromCharCode(code - key)).join('');
-        }
-
-        function getDownloadUrl() {
-            // Method 1: Combine Base64 parts
-            const method1 = encodedParts.map(part => decodeBase64(part)).join('');
+        // Добавление ссылки через интерфейс (для админов)
+        function addLinkViaInterface() {
+            const key = prompt('Enter link key (e.g., "newtool"):');
+            const url = prompt('Enter download URL:');
+            const filename = prompt('Enter filename:');
             
-            // Method 2: Reverse string
-            const method2 = reverseString(reversedLink);
-            
-            // Method 3: Character codes
-            const method3 = decodeCharCodes(charCodes);
-            
-            // Method 4: Mathematical obfuscation
-            const method4 = decodeMathObfuscation(mathArray, mathKey);
-            
-            // Validate all methods return the same URL
-            const urls = [method1, method2, method3, method4];
-            const validUrl = urls.find(url => url.startsWith('https://mega.nz/'));
-            
-            return validUrl || urls[0];
-        }
-
-        function validateTimeWindow() {
-            const now = new Date();
-            const hour = now.getHours();
-            // Only allow downloads during certain hours (example: 6 AM to 10 PM)
-            return hour >= 6 && hour <= 22;
-        }
-
-        function generateDynamicFilename() {
-            const prefixes = ['Banansense', 'CS2_Loader', 'External_Tool', 'Game_Enhancer'];
-            const suffixes = ['_Premium', '_Alpha', '_v2', '_Final'];
-            const extensions = ['.zip', '.exe', '.rar', '.7z'];
-            
-            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-            const randomExt = extensions[Math.floor(Math.random() * extensions.length)];
-            
-            return `${randomPrefix}${randomSuffix}${randomExt}`;
-        }
-
-        function initiateProtectedDownload() {
-            const btn = document.getElementById('downloadBtn');
-            
-            // Time validation
-            if (!validateTimeWindow()) {
-                showNotification('❌ Downloads available from 6:00 to 22:00 only');
-                return;
-            }
-
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-shield-alt fa-spin"></i> VERIFYING...';
-
-            // Add delay to prevent automated scraping
-            setTimeout(() => {
-                try {
-                    // Get protected URL
-                    const downloadUrl = getDownloadUrl();
-                    const filename = generateDynamicFilename();
-                    
-                    // Create hidden download
-                    const link = document.createElement('a');
-                    link.href = downloadUrl;
-                    link.download = filename;
-                    link.style.display = 'none';
-                    
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    
-                    showNotification('✅ Secure download started!');
-                    
-                } catch (error) {
-                    showNotification('❌ Download failed. Try again.');
-                    console.error('Download error:', error);
-                } finally {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-download"></i> SECURE DOWNLOAD';
-                }
-            }, 2000);
-        }
-
-        // Additional protection: Obfuscate function names in production
-        window['initiateProtectedDownload'] = initiateProtectedDownload;
-
-        // Anti-debugging protection
-        function detectDevTools() {
-            const threshold = 160;
-            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-            
-            if (widthThreshold || heightThreshold) {
-                document.body.innerHTML = '<div style="text-align:center;padding:50px;color:white;"><h1>🚫 Access Restricted</h1><p>Developer tools detected</p></div>';
+            if (key && url && filename) {
+                const encodedUrl = btoa(url);
+                addNewLink(key, encodedUrl, filename);
+                showNotification(`✅ Link "${key}" added successfully!`);
             }
         }
 
-        // Run anti-debugging check
-        setInterval(detectDevTools, 1000);
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загрузка дополнительных ссылок при необходимости
+            loadLinksFromConfig().then(config => {
+                console.log('Loaded config:', config);
+            });
 
-        // Clear console on open
-        if (typeof console !== "undefined") {
-            console.clear();
-        }
+            showNotification('🚀 Download system ready');
+            
+            // Добавьте эту кнопку в HTML для админ-панели:
+            // <button onclick="addLinkViaInterface()" style="position:fixed; bottom:20px; right:20px;">➕ Add Link</button>
+        });
 
-        showNotification('🔒 Secure download system activated');
-    </script>
+        // 📝 ИНСТРУКЦИЯ ПО ДОБАВЛЕНИЮ НОВОЙ ССЫЛКИ:
 
-    <!-- Additional obfuscation layer -->
-    <script>
-        // This would normally be a properly obfuscated script
-        // For demonstration, using simple encoding
-        window.protectionLayer = function() {
-            return {
-                checkIntegrity: function() {
-                    return document.scripts.length === 2; // Expected number of scripts
-                },
-                validateEnvironment: function() {
-                    return typeof window !== 'undefined' && 
-                           typeof document !== 'undefined' &&
-                           !window.self !== window.top; // Not in iframe
-                }
-            };
-        }();
+        // 1. Преобразуйте ссылку в Base64:
+        //    - Откройте консоль браузера (F12)
+        //    - Введите: btoa('https://your-link.com/file.zip')
+        //    - Скопируйте результат
+
+        // 2. Добавьте в объект links:
+        //    'newkey': {
+        //        encoded: 'ВАШ_BASE64_КОД',
+        //        filename: 'File_Name.zip'
+        //    }
+
+        // 3. Создайте кнопку в HTML:
+        //    <button onclick="downloadFile('newkey')">Download New</button>
+
+        // 🎯 ПРИМЕР ДОБАВЛЕНИЯ:
+        // 
+        // 1. Получить Base64: btoa('https://mega.nz/file/example123')
+        // 2. Добавить в links:
+        //    'update': {
+        //        encoded: 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZXhhbXBsZTEyMw==',
+        //        filename: 'Update_v2.1.0.zip'
+        //    }
+        // 3. Добавить кнопку в HTML
     </script>
 </body>
 </html>
